@@ -30,7 +30,7 @@ Proyek ini adalah implementasi layanan  menggunakan gRPC dengan bahasa Go. Terda
 3. **Jalankan server atau client**
 	```bash
 	go run main.go
-	# atau
+	# dan
 	go run grpcclient/main.go
 	```
 
