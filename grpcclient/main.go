@@ -2,7 +2,9 @@ package main
 
 import (
 	"context"
+	"errors"
 	"grpc/pb/chat"
+	"io"
 	"log"
 
 	"google.golang.org/grpc"
@@ -69,6 +71,9 @@ func main() {
 	for {
 		msg, err := stream.Recv()
 		if err != nil {
+			if errors.Is(err, io.EOF) {
+				break
+			}
 			log.Fatal("failed to receive message from stream: ", err)
 		}
 		log.Printf("message from user %d: %s", msg.UserId, msg.Content)
